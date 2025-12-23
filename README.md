@@ -8,6 +8,16 @@
 ## 📂 Repository Structure
 
 ```text
+# Privacy-Preserving NIDS Data Generation using Robust GANs
+
+**NIDS-Gans** is a research framework designed to address data scarcity and privacy challenges in Network Intrusion Detection Systems (NIDS). This project combines high-fidelity network simulation using **OMNeT++** with **Robust Generative Adversarial Networks (GANs)** to synthesize realistic, privacy-preserved cybersecurity datasets.
+
+## ⚠️ Code Availability Notice
+**The full source code for the Robust GAN architecture and training pipeline will be made public upon the acceptance/publication of the associated research paper.** Currently, this repository hosts the **OMNeT++ simulation files** and the **Datasets (Real & Synthetic)** generated during the study to support reproducibility of the results.
+
+## 📂 Repository Structure
+
+```text
 NIDS-GANS/
 ├── Dataset/                            # Preprocessed & Synthetic Datasets
 │   ├── nids_final_clean.csv            # Cleaned real-world traffic (Benign + Attack)
@@ -20,11 +30,12 @@ NIDS-GANS/
 │   └── omnetpp.ini                     # General simulation settings
 ├── Pcaps/                              # Raw network capture files (Ground Truth)
 ├── Results/                            # Validation Charts & Figures
-│   ├── augmentation_impact.png
-│   ├── correlation_comparison.png
-│   ├── distribution_quality.png
-│   ├── feature_importance.png
-│   └── privacy_confusion_matrix.png
+│   ├── omnet_topology.png              # Network Simulation Topology
+│   ├── augmentation_impact.png         # Exp A: Accuracy Comparison
+│   ├── privacy_confusion_matrix.png    # Exp B: Synthetic-Only Model Performance
+│   ├── distribution_quality.png        # Part 4: KDE Distribution Plots
+│   ├── feature_importance.png          # Part 4: RF Feature Stability
+│   └── correlation_comparison.png      # Part 4: Pearson Correlation Matrix
 └── README.md
 ```
 
@@ -33,10 +44,10 @@ NIDS-GANS/
 We utilized the **INET Framework** within OMNeT++ to simulate a realistic network environment under controlled Cyber Attacks.
 
 ### Topology (`FiveNodeNetwork`)
-The network consists of a **Star Topology** with a central Ethernet Switch connecting:
-* **Victim Server**: Hosts HTTP (Port 80) and SSH (Port 22) services.
-* **Attacker Node (10.0.0.5)**: A dedicated node executing scripted attacks.
-* **Legitimate Clients**: Nodes generating background noise (randomized requests/replies) to mimic real-world traffic.
+The network implements a **Star Topology** where all nodes connect through a central Ethernet Switch.
+
+![OMNeT++ Simulation Topology](Results/omnet_topology.png)
+*(Figure 1: The OMNeT++ simulation environment showing the Victim Server, Attacker Node, and Legitimate Clients connected via a central Switch.)*
 
 ### Attack Scenarios
 The simulation covers three primary attack vectors defined in the `.ini` files:
