@@ -179,4 +179,6 @@ Contributions are welcome, especially for expanding the attack scenarios or impr
 
 ## 📄 License
 
-This project is open-source. [Insert License Here]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
